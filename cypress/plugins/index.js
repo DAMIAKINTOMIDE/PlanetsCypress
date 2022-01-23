@@ -13,3 +13,6 @@
 // the project's config changing)
 
 
+module.exports = function (on, config) {
+    // configure plugins here
+  }
