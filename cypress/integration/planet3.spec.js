@@ -16,7 +16,7 @@ describe("Test service", () => {
             'x-frame-options': "SAMEORIGIN"});
             expect(response.status).to.eq(200);
             expect(response.body).has.property("name","Yavin IV");
-            expect(response.time).lessThan(3);
+            expect(response.duration).lessThan(3);
         });
     });
 
