@@ -4,7 +4,7 @@ describe("Test service", () => {
 
     it("Test - verify from GET", ()=>{
         cy.request('GET',"api/planets/3").then((response) => {
-            expect(response).to.have("headers");
+            expect(response).has.property("headers");
             expect(response.headers).to.include({'allow': "GET, HEAD, OPTIONS",
             'connection': "keep-alive",
             'content-type': "application/json",
