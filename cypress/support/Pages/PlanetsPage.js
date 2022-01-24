@@ -9,7 +9,7 @@ export class PlanetsByIDRequest {
 
     VerifyRespHeaders(){
         PlanetsbyID.ReadData();
-        cy.request("@planets".endpointplantid+"3").then((response) => {
+        cy.request("@planets"+endpointplantid+"3").then((response) => {
             expect(response).has.property("headers");
             expect(response.headers).to.include({'allow': "GET, HEAD, OPTIONS",
             'connection': "keep-alive",
@@ -22,7 +22,7 @@ export class PlanetsByIDRequest {
 
     VerifyResp(){ 
         PlanetsbyID.ReadData();
-        cy.request("@planets".endpointplantid+"3").then((response) => {
+        cy.request("@planets"+endpointplantid+"3").then((response) => {
            
             expect(response.body).has.property("name","Yavin IV");
             expect(response.body.property).has.value();
@@ -34,7 +34,7 @@ export class PlanetsByIDRequest {
     VerifyRespTime(){
        
         PlanetsbyID.ReadData();
-        cy.request("@planets".endpointplantid+"3").then((response) => {
+        cy.request("@planets"+endpointplantid+"3").then((response) => {
          
             expect(response.duration/1000).lessThan(3);
         });
@@ -47,7 +47,7 @@ export class PlanetsByIDRequest {
         cy.get("@planets").then((planets) =>{
             cy.request({
                 method:'POST',
-                url: planets.endpointplantid+"3",
+                url: planets+endpointplantid+"3",
                 body:planets.planetbody,
                 failOnStatusCode: false
             }).then((res) =>{
