@@ -18,11 +18,11 @@ describe("Test service", () => {
             expect(response.body).has.property("name","Yavin IV");
         });
     });
-    
+
     it("Test - verify duration from GET", ()=>{
         cy.request('GET',"api/planets/3").then((response) => {
            
-            expect(response.duration).lessThan(3);
+            expect(response.duration/1000).lessThan(3);
         });
     });
 
