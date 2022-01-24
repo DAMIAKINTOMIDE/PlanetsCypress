@@ -9,24 +9,29 @@ export class PlanetsByIDRequest {
 
     VerifyRespHeaders(){
         PlanetsbyID.ReadData();
-        cy.request("@planets"+endpointplantid+"3").then((response) => {
-            expect(response).has.property("headers");
-            expect(response.headers).to.include({'allow': "GET, HEAD, OPTIONS",
-            'connection': "keep-alive",
-            'content-type': "application/json"});
-            expect(response.status).to.eq(200);
-           
+        cy.get("@planets").then((planets) =>{
+            cy.request(planets.endpointplantid+"3").then((response) => {
+                expect(response).has.property("headers");
+                expect(response.headers).to.include({'allow': "GET, HEAD, OPTIONS",
+                'connection': "keep-alive",
+                'content-type': "application/json"});
+                expect(response.status).to.eq(200);
+               
+            });
         });
+       
      
     }
 
     VerifyResp(){ 
         PlanetsbyID.ReadData();
-        cy.request("@planets"+endpointplantid+"3").then((response) => {
-           
-            expect(response.body).has.property("name","Yavin IV");
-            expect(response.body.property).has.value();
-          
+        cy.get("@planets").then((planets) =>{
+            cy.request(planets.endpointplantid+"3").then((response) => {
+            
+                expect(response.body).has.property("name","Yavin IV");
+                expect(response.body.property).has.value();
+            
+            });
         });
    
     }
@@ -34,11 +39,12 @@ export class PlanetsByIDRequest {
     VerifyRespTime(){
        
         PlanetsbyID.ReadData();
-        cy.request("@planets"+endpointplantid+"3").then((response) => {
+        cy.get("@planets").then((planets) =>{
+        cy.request(planets.endpointplantid+"3").then((response) => {
          
             expect(response.duration/1000).lessThan(3);
         });
-    
+        });
      
     }
 
