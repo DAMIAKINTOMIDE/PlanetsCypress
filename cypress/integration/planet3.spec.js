@@ -16,7 +16,11 @@ describe("Test service", () => {
             'x-frame-options': "SAMEORIGIN"});
             expect(response.status).to.eq(200);
             expect(response.body).has.property("name","Yavin IV");
-            //expect(response.duration).lessThan(3);
+        });
+
+        cy.request('GET',"api/planets/3").then((response) => {
+           
+            expect(response.duration).lessThan(3);
         });
     });
 
