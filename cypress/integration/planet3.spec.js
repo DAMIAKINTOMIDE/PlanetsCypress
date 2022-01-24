@@ -17,7 +17,9 @@ describe("Test service", () => {
             expect(response.status).to.eq(200);
             expect(response.body).has.property("name","Yavin IV");
         });
-
+    });
+    
+    it("Test - verify duration from GET", ()=>{
         cy.request('GET',"api/planets/3").then((response) => {
            
             expect(response.duration).lessThan(3);
